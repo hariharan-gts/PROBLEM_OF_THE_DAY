@@ -28,11 +28,31 @@ public class remove_adjacent {
     		
     	return ans.length()==0?"Empty":ans;
     }
-  
+    public static String remove1(String s) {
+    	String ans="";
+    	Stack<Character>st=new Stack<>();
+    	int i=s.length()-1;
+    	while(i>=0) {
+    		if(st.isEmpty()||st.peek()!=s.charAt(i)) {
+    			st.add(s.charAt(i));
+    			i--;
+    		}else {
+    			st.pop();
+    			i--;
+    		}
+    	}
+    	if(st.isEmpty())
+    		return "Empty";
+    	while(!st.isEmpty()) {
+    		ans+=st.peek();
+    		st.pop();
+    	}
+    	return ans;
+    }
 	public static void main(String[] args) {
 		Scanner sc=new Scanner(System.in);
 		String s=sc.next();
-		System.out.println(remove(s));
+		System.out.println(remove1(s));
 	}
 
 }
